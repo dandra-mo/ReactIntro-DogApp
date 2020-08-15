@@ -1,20 +1,6 @@
-// step3: Create another component/another stamp to use
-// const Pet = (props) => {
-//     return React.createElement("div", {}, [
-//         React.createElement("h1", {}, props.name),
-//         React.createElement("h2", {}, props.animal),
-//         React.createElement("h2", {}, props.breed)
-//     ]);
-// };
-
-// Destructuring props
-const Pet = ({ name, animal, breed }) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, name),
-    React.createElement("h2", {}, animal),
-    React.createElement("h2", {}, breed),
-  ]);
-};
+import React from "react"; // React is the default export; 'react' is the react package
+import { render } from "react-dom"; // could also import ReactDOM, but we want only specific export from react-dom called render
+import Pet from "./Pet";
 
 // components (App/Pet) are reusable
 // Pet components used 3 times to create elements/divs
@@ -51,7 +37,7 @@ const App = () => {
   );
 };
 // step2: This stamps the App to the Dom // DOM must be all CAPS
-ReactDOM.render(
+render(
   React.createElement(App), // App is the stamp I created, OR it can take a string and make an actual h1, but we're create a stamp so use the entire function
   document.getElementById("root") // where it is going? into Root (id inside div above)
 );

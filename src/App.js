@@ -1,6 +1,8 @@
 import React from "react"; // React is the default export; 'react' is the react package
 import { render } from "react-dom"; // could also import ReactDOM, but we want only specific export from react-dom called render
+import { Router, Link } from "@reach/router";
 import SearchParams from "./searchParams";
+import Details from "./Details";
 //import Pet from "./Pet"
 
 // components (App/Pet) are reusable
@@ -48,8 +50,13 @@ const App = () => {
   // verion imported from searchParams
   return (
     <div>
-      <h1>Adopt Me!</h1>
-      <SearchParams />
+      <header>
+        <Link to="/">Adopt Me!</Link>
+      </header>
+      <Router>
+        <SearchParams path="/" />
+        <Details path="/details/:id" />
+      </Router>
     </div>
   );
 };

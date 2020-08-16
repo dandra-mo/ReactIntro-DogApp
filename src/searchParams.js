@@ -4,7 +4,7 @@ import Results from "./Results";
 import useDropdown from "./useDropdown";
 
 //STEP1: searcP rendered, location, breed, animal set
-const searchParams = () => {
+const SearchParams = () => {
   const [location, setLocation] = useState("San Francisco, CA"); // SF is the default
   // this is a hook - always begins with a useSomething (useState, useSomething)
   //   const [animal, setAnimal] = useState("Dog");
@@ -67,4 +67,4 @@ const searchParams = () => {
   );
 };
 
-export default searchParams;
+export default SearchParams;

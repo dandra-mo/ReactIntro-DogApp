@@ -1,9 +1,10 @@
-import React from "react"; // React is the default export; 'react' is the react package
+import React, { useState } from "react"; // React is the default export; 'react' is the react package
 import { render } from "react-dom"; // could also import ReactDOM, but we want only specific export from react-dom called render
 import { Router, Link } from "@reach/router";
 import SearchParams from "./searchParams";
 import Details from "./Details";
 //import Pet from "./Pet"
+import ThemeContext from "./ThemeContext";
 
 // components (App/Pet) are reusable
 // Pet components used 3 times to create elements/divs
@@ -48,16 +49,22 @@ const App = () => {
   //   </div>
   // );
   // verion imported from searchParams
+  const themeHook = useState("darkblue");
+
   return (
-    <div>
-      <header>
-        <Link to="/">Adopt Me!</Link>
-      </header>
-      <Router>
-        <SearchParams path="/" />
-        <Details path="/details/:id" />
-      </Router>
-    </div>
+    <React.StrictMode>
+      <ThemeContext.Provider value={themeHook}>
+        <div>
+          <header>
+            <Link to="/">Adopt Me!</Link>
+          </header>
+          <Router>
+            <SearchParams path="/" />
+            <Details path="/details/:id" />
+          </Router>
+        </div>
+      </ThemeContext.Provider>
+    </React.StrictMode>
   );
 };
 // step2: This stamps the App to the Dom // DOM must be all CAPS
